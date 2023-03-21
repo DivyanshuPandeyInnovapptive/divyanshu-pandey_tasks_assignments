@@ -1,0 +1,145 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreatePost(
+  $filter: ModelSubscriptionPostFilterInput
+  $username: String
+) {
+  onCreatePost(filter: $filter, username: $username) {
+    id
+    title
+    description
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        postCommentsId
+        username
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    username
+  }
+}
+subscription OnUpdatePost(
+  $filter: ModelSubscriptionPostFilterInput
+  $username: String
+) {
+  onUpdatePost(filter: $filter, username: $username) {
+    id
+    title
+    description
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        postCommentsId
+        username
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    username
+  }
+}
+subscription OnDeletePost(
+  $filter: ModelSubscriptionPostFilterInput
+  $username: String
+) {
+  onDeletePost(filter: $filter, username: $username) {
+    id
+    title
+    description
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        postCommentsId
+        username
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    username
+  }
+}
+subscription OnCreateComment(
+  $filter: ModelSubscriptionCommentFilterInput
+  $username: String
+) {
+  onCreateComment(filter: $filter, username: $username) {
+    id
+    content
+    post {
+      id
+      title
+      description
+      comments {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      username
+    }
+    createdAt
+    updatedAt
+    postCommentsId
+    username
+  }
+}
+subscription OnUpdateComment(
+  $filter: ModelSubscriptionCommentFilterInput
+  $username: String
+) {
+  onUpdateComment(filter: $filter, username: $username) {
+    id
+    content
+    post {
+      id
+      title
+      description
+      comments {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      username
+    }
+    createdAt
+    updatedAt
+    postCommentsId
+    username
+  }
+}
+subscription OnDeleteComment(
+  $filter: ModelSubscriptionCommentFilterInput
+  $username: String
+) {
+  onDeleteComment(filter: $filter, username: $username) {
+    id
+    content
+    post {
+      id
+      title
+      description
+      comments {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      username
+    }
+    createdAt
+    updatedAt
+    postCommentsId
+    username
+  }
+}

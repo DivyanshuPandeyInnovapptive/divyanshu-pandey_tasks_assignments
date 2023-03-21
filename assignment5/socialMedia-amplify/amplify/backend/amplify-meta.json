@@ -1,0 +1,98 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-socialmediaamplify-dev-152548-authRole",
+      "UnauthRoleArn": "arn:aws:iam::812127017232:role/amplify-socialmediaamplify-dev-152548-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::812127017232:role/amplify-socialmediaamplify-dev-152548-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-socialmediaamplify-dev-152548-deployment",
+      "UnauthRoleName": "amplify-socialmediaamplify-dev-152548-unauthRole",
+      "StackName": "amplify-socialmediaamplify-dev-152548",
+      "StackId": "arn:aws:cloudformation:ap-south-1:812127017232:stack/amplify-socialmediaamplify-dev-152548/6c016cb0-c705-11ed-9202-0aad534ec626",
+      "AmplifyAppId": "d179p0gnnii2fy"
+    }
+  },
+  "api": {
+    "socialmediaamplify": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "socialmediaamplify77b0074c",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authsocialmediaamplify77b0074c"
+              }
+            }
+          ]
+        },
+        "GraphQLAPIIdOutput": "eqrzxmwfv5hvlf2kjiionw4l6e",
+        "GraphQLAPIEndpointOutput": "https://afffcdo7jnbvnayttzimmkmasm.appsync-api.ap-south-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-54jj3kqjszg3bea62csyg75hie"
+      },
+      "lastPushTimeStamp": "2023-03-20T11:56:04.136Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-socialmediaamplify-dev-152548-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apisocialmediaamplify"
+      },
+      "lastPushDirHash": "Pq5NB8l0DWtdun9khD6SpHjXA0c="
+    }
+  },
+  "auth": {
+    "socialmediaamplify77b0074c": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-socialmediaamplify-dev-152548-deployment/amplify-cfn-templates/auth/socialmediaamplify77b0074c-cloudformation-template.json",
+        "logicalId": "authsocialmediaamplify77b0074c"
+      },
+      "lastPushTimeStamp": "2023-03-20T11:55:54.333Z",
+      "output": {
+        "UserPoolId": "ap-south-1_xVI923SoW",
+        "AppClientIDWeb": "1rscug8dvjk0fmip472jhv1api",
+        "AppClientID": "6dekpg9q3dkg093m4rv5pm2b66",
+        "IdentityPoolId": "ap-south-1:c5612407-ec45-4c51-8979-6bb474499b09",
+        "UserPoolArn": "arn:aws:cognito-idp:ap-south-1:812127017232:userpool/ap-south-1_xVI923SoW",
+        "IdentityPoolName": "socialmediaamplify77b0074c_identitypool_77b0074c__dev",
+        "UserPoolName": "socialmediaamplify77b0074c_userpool_77b0074c"
+      },
+      "lastPushDirHash": "AFRktuRwEPMJDxjptdzIVGWB+FQ="
+    }
+  }
+}

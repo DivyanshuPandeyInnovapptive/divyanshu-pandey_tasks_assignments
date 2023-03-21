@@ -1,0 +1,50 @@
+<amplify-authenticator>
+  <ng-template
+    amplifySlot="authenticated"
+    let-user="user"
+    let-signOut="signOut"
+  >
+    <!-- {{ user | json }} -->
+    <div class="nav-container">
+      <mat-toolbar class="nav-container" color="primary">
+        <span>Social Media Mean</span>
+        <!-- <span class="nav-spacer"></span> -->
+        <form class="search-form">
+          <mat-form-field class="search" appearance="fill">
+            <mat-label>Search Post</mat-label>
+            <input
+              type="text"
+              placeholder="Title"
+              aria-label="Post"
+              matInput
+              [formControl]="myControl"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptions | async"
+                [value]="option"
+              >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+        <!-- <span class="nav-spacer"></span> -->
+        <button mat-button (click)="signOut()">Logout</button>
+      </mat-toolbar>
+    </div>
+
+    <div class="user-container">
+      <mat-card>
+        <mat-card-content>
+          <h2>User</h2>
+          <p>Name: {{ user.username }}</p>
+          <p>Email: {{ user.attributes.email }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <app-home></app-home>
+  </ng-template>
+</amplify-authenticator>
