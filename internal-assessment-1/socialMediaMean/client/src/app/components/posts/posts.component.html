@@ -1,0 +1,76 @@
+<div class="post-container">
+  <mat-card class="post" *ngFor="let post of posts$ | async">
+    <mat-card-content>
+      <div class="post-c1">
+        <div>
+          <h2>{{ post.title }}</h2>
+          <div class="post-c2">
+            <p class="post-description">{{ post.description }}</p>
+          </div>
+        </div>
+        <div class="post-c">
+          <div *ngIf="post.userId.id === user_id">
+            <button
+              (click)="updatePost(post)"
+              mat-mini-fab
+              color="primary"
+              aria-label="Update"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <span>&nbsp;&nbsp;</span>
+            <button
+              (click)="deletePost(post.id)"
+              mat-mini-fab
+              color="warn"
+              aria-label="Delete"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+            <br />
+            <br />
+          </div>
+          <p>{{ post.userId.name }}</p>
+          <p>{{ post.userId.email }}</p>
+          <h5>{{ post.timestamp | date }}</h5>
+        </div>
+      </div>
+      <!-- <div class="post-c2">
+        <p class="post-description">{{ post.description }}</p>
+      </div> -->
+      <form class="post-form">
+        <mat-form-field class="post-comment">
+          <mat-label>Leave a comment</mat-label>
+          <input
+            type="text"
+            [(ngModel)]="temp_comments[post.id]"
+            name="post_comment"
+            matInput
+            placeholder="Comment here..."
+          />
+        </mat-form-field>
+        <button
+          (click)="addComment(post.id)"
+          mat-fab
+          color="primary"
+          aria-label="Comment"
+        >
+          <mat-icon>send</mat-icon>
+        </button>
+      </form>
+      <!-- comment -->
+      <h3><b>Comments</b></h3>
+      <hr />
+      <div *ngFor="let comment of post.comments">
+        <div class="comment-c">
+          <p>{{ comment.userId.name }} : {{ comment.data }}</p>
+          <div class="post-c">
+            <p>{{ comment.userId.email }}</p>
+            <h5>{{ comment.timestamp | date }}</h5>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

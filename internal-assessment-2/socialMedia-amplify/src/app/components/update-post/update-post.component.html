@@ -1,0 +1,53 @@
+<div class="update-post-container" *ngIf="temp_post_id !== ''">
+  <mat-card>
+    <mat-card-content>
+      <div class="update-c">
+        <h2>Update Post</h2>
+        <button
+          (click)="hideComponent()"
+          mat-mini-fab
+          color="secondary"
+          aria-label="Delete"
+        >
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+      <br />
+      <div class="create-post-form">
+        <mat-form-field class="post-title">
+          <mat-label>Title</mat-label>
+          <input
+            type="text"
+            matInput
+            [(ngModel)]="temp_post_title"
+            placeholder="Post Title"
+          />
+        </mat-form-field>
+        <mat-form-field class="post-description">
+          <mat-label>Description</mat-label>
+          <input
+            type="text"
+            [(ngModel)]="temp_post_description"
+            matInput
+            placeholder="Post Description"
+          />
+        </mat-form-field>
+        <button
+          (click)="
+            updatePost({
+              id: temp_post_id,
+              title: temp_post_title,
+              description: temp_post_description
+            })
+          "
+          mat-raised-button
+          color="primary"
+          aria-label="SubmitPost"
+        >
+          <div>Update</div>
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

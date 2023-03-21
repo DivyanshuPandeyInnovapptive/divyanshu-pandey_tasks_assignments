@@ -8,7 +8,8 @@
     <div class="nav-container">
       <mat-toolbar class="nav-container" color="primary">
         <span>Social Media Mean</span>
-        <div class="search-form">
+        <!-- <span class="nav-spacer"></span> -->
+        <form class="search-form">
           <mat-form-field class="search" appearance="fill">
             <mat-label>Search Post</mat-label>
             <input
@@ -16,28 +17,20 @@
               placeholder="Title"
               aria-label="Post"
               matInput
-              [(ngModel)]="searchTitle"
-              (ngModelChange)="search($event)"
+              [formControl]="myControl"
+              [matAutocomplete]="auto"
             />
-            <mat-autocomplete>
-              <mat-option *ngFor="let post of options" [value]="post">
-                <!-- <div class="post-c1">
-                  <div>
-                    <h2>{{ post.title }}</h2>
-                    <div class="post-c2">
-                      <p class="post-description">{{ post.description }}</p>
-                    </div>
-                  </div>
-                  <div class="post-c">
-                    <p>{{ post.username }}</p>
-                    <h5>{{ post.createdAt | date }}</h5>
-                  </div>
-                </div> -->
-                {{ post.title }}
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptions | async"
+                [value]="option"
+              >
+                {{ option }}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-        </div>
+        </form>
+        <!-- <span class="nav-spacer"></span> -->
         <button mat-button (click)="signOut()">Logout</button>
       </mat-toolbar>
     </div>

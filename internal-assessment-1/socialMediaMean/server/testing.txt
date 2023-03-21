@@ -1,0 +1,232 @@
+# USER ---------------------------------------------
+
+# add user
+# mutation {
+#   addUser(name: "Gaurav Laud", email: "gaurav@gmail.com", password: "password", passwordConfirm: "password") {
+#     id,
+#     name,
+#     email,
+#     password
+#   }
+# }
+
+# get users
+# {
+#   users {
+#     id,
+#     name,
+#     email
+#   }
+# }
+
+# get user by id 
+# {
+#   user(id: "640b8b57f458f803741d7a98") {
+#     id,
+#     name,
+#     email
+#   }
+# }
+
+# update user 
+# mutation {
+#   updateUser(id: "640b8b7ef458f803741d7a9c", name: "SURAJ") {
+#     id,
+#     name,
+#     email
+#   }
+# }
+
+# delete user
+# mutation {
+#   deleteUser(id: "640b98da5cb164a32fb17328") {
+#     id
+#   }
+# }
+
+
+# POST --------------------------------------------
+
+# add post
+# mutation {
+#   addPost(title: "Post 1", description: "Description 1", userId: "640b99d45cb164a32fb17357") {
+#     id,
+#     title,
+#     description,
+#     userId {
+#       id,
+#       name,
+#       email
+#     }
+#     comments {
+#       id,
+#       data
+#     },
+# 			timestamp
+#   }
+# }
+
+# # get posts
+{
+  posts {
+    id,
+    title,
+    description,
+    userId {
+      id,
+      name,
+      email
+    },
+    comments {
+      id,
+      data,
+      userId {
+        id,
+        name,
+        email
+      }
+      timestamp,
+    }
+    timestamp
+  }
+}
+
+# get post by id
+# {
+#   post(id: "640b8e5473da86c6a6f285a1") {
+#     id,
+#     title,
+#     description,
+#     userId {
+#       id,
+#       name,
+#       email
+#     },
+#     comments {
+#       id,
+#       data,
+#       userId {
+#         id,
+#         name,
+#         email
+#       }
+#       timestamp,
+#     }
+#     timestamp
+#   }
+# }
+
+# update post 
+# mutation {
+#   updatePost(id: "640b8e5473da86c6a6f285a1", title: "My Photu") {
+#     id,
+#     title,
+#     description,
+#     userId {
+#       id,
+#       name,
+#       email
+#     },
+#     comments {
+#       id,
+#       data,
+#       userId {
+#         id,
+#         name,
+#         email
+#       }
+#       timestamp,
+#     }
+#     timestamp
+#   }
+# }
+
+# delete post
+# mutation {
+#   deletePost(id: "640b8e5473da86c6a6f285a1") {
+#     id
+#   }
+# }
+
+# Comment --------------------------------------------
+
+# add comment 
+# mutation {
+#   addComment(data: "Comment 3", userId: "640b8b68f458f803741d7a9a", postId: "640b8e7773da86c6a6f285a6") {
+#     id,
+#     data,
+#     userId {
+#       id,
+#       name
+#     },
+#     postId {
+#       id,
+#       title
+#     }
+#     timestamp
+#   }
+# }
+
+# get comments
+# {
+#   comments {
+#     id,
+#     data,
+#     userId {
+#       id,
+#       name,
+#       email,
+#     },
+#     postId {
+#       id,
+#       title,
+#       description,
+#     },
+#     timestamp
+#   }
+# }
+
+# get comment by id
+# {
+#   comment(id: "") {
+#     id,
+#     data,
+#     userId {
+#       id,
+#       name,
+#       email,
+#     },
+#     postId {
+#       id,
+#       title,
+#       description,
+#     },
+#     timestamp
+#   }
+# }
+
+# update comment
+# mutation {
+#   updateComment(id: "", data: "Updated Comment") {
+#     id,
+#     data,
+#     userId {
+#       id,
+#       name,
+#       email,
+#     },
+#     postId {
+#       id,
+#       title,
+#       description,
+#     },
+#     timestamp
+#   }
+# }
+
+# delete comment
+# mutation {
+#   deleteComment(id: "640b99565cb164a32fb1733c") {
+#     id
+#   }
+# }
