@@ -1,5 +1,8 @@
 # SocialMediaAmplify
 
+![Screenshot from 2023-03-21 17-08-46](https://user-images.githubusercontent.com/123721670/227764133-433416ca-18ef-4e8d-a0cd-266e0898e96f.png)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
 ## Development server
