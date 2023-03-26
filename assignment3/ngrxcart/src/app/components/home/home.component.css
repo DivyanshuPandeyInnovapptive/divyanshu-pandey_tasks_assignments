@@ -1,0 +1,15 @@
+.phone-container {
+    width: 20rem;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.grid {
+    margin: 1rem;
+    margin-left: 10rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}

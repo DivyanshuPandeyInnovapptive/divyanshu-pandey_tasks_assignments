@@ -1,0 +1,32 @@
+{
+  "moviebookings": [
+    {
+      "id": 1,
+      "movieName": "Avatar: The Way of Water",
+      "noOfTickets": 3,
+      "totalAmount": 450,
+      "movieBookingDate": "02/01/2023"
+    },
+    {
+      "id": 2,
+      "movieName": "Ant-Man and the Wasp: Quantumania",
+      "noOfTickets": 2,
+      "totalAmount": 300,
+      "movieBookingDate": "10/03/2023"
+    },
+    {
+      "id": 3,
+      "movieName": "Avengers: Infinity War",
+      "movieBookingDate": "10/02/2023",
+      "noOfTickets": 5,
+      "totalAmount": 750
+    },
+    {
+      "movieName": "Iron Man",
+      "movieBookingDate": "08/02/2023",
+      "noOfTickets": 15,
+      "totalAmount": 2250,
+      "id": 4
+    }
+  ]
+}

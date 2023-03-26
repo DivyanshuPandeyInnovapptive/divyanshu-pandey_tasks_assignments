@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ngfly-dev-163051-authRole",
+      "UnauthRoleArn": "arn:aws:iam::812127017232:role/amplify-ngfly-dev-163051-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::812127017232:role/amplify-ngfly-dev-163051-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-ngfly-dev-163051-deployment",
+      "UnauthRoleName": "amplify-ngfly-dev-163051-unauthRole",
+      "StackName": "amplify-ngfly-dev-163051",
+      "StackId": "arn:aws:cloudformation:ap-south-1:812127017232:stack/amplify-ngfly-dev-163051/fb0d3810-c969-11ed-9a6d-0a22c52a8c78",
+      "AmplifyAppId": "d3g325byyxkdxd"
+    },
+    "categories": {
+      "api": {
+        "ngfly": {}
+      },
+      "auth": {
+        "ngfly88965dc6": {}
+      }
+    }
+  }
+}

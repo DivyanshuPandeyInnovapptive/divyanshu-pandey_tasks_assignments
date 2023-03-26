@@ -1,0 +1,22 @@
+<div style="text-align: center">
+  <h1>Welcome to {{ title }}!</h1>
+  <br />
+  <br />
+</div>
+
+<div>
+  <h3>{{ title }}</h3>
+</div>
+<br />
+<div>
+  <button type="button" (click)="show()">Show</button>
+  <button type="button" (click)="hide()">Hide</button>
+</div>
+<br />
+<br />
+
+<!-- <div *ngIf="val" id="msgText">{{ msg  }}</div> -->
+
+<div *ngIf="val" id="msgText">
+  {{ msg | alphaCase : "U" }}
+</div>

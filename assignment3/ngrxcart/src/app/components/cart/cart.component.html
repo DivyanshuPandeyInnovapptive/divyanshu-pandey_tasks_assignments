@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Cart Items</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of allProducts$ | async">
+        <td>{{ product.id }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.price * product.quantity }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

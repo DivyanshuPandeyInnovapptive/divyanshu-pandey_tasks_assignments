@@ -1,0 +1,32 @@
+<div class="navbar bg-base-100 shadow-md">
+  <div class="flex-1">
+    <a class="btn btn-ghost logo" [routerLink]="['/']">ngFlight</a>
+  </div>
+  <div *ngIf="isAuthenticated" class="flex-none">
+    <div>
+      <a
+        class="btn btn-ghost normal-case text-xl mr-[1rem]"
+        [routerLink]="['/bookings']"
+        >My Trips</a
+      >
+    </div>
+    <div class="dropdown dropdown-end">
+      <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+        <div class="w-10 rounded-full">
+          <img src="../../../assets/avatar.jpg" alt="avatar" />
+        </div>
+      </label>
+      <ul
+        tabindex="0"
+        class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+      >
+        <li>
+          <a [routerLink]="['/profile']"> Profile </a>
+        </li>
+        <li>
+          <a (click)="signOut()" class="active:bg-[red]">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

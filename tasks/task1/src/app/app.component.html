@@ -1,0 +1,98 @@
+<nav>
+  <a class="form-control btn btn-primary w-25" routerLink="/home">Home</a>
+  <a class="form-control btn btn-primary w-25" routerLink="/signup">Sign Up</a>
+  <a class="form-control btn btn-primary w-25" routerLink="/about">About Us</a>
+  <a class="form-control btn btn-primary w-25" routerLink="/contact"
+    >Contact Us</a
+  >
+</nav>
+<router-outlet></router-outlet>
+<h1>{{ login_title }}</h1>
+{{ msgFromCHild }}
+<div class="main">
+  <app-login
+    [myInputMsg]="myInputMsg"
+    (myOutput)="getDataFromChild($event)"
+    class="login-form"
+  ></app-login>
+</div>
+
+<ul>
+  <li *ngFor="let course of courses; let i = index">
+    {{ course.id }} - {{ course.name }}
+  </li>
+</ul>
+<br />
+<table>
+  <tr>
+    <th>Order Id</th>
+    <th>Product Name</th>
+    <th>Quantity</th>
+    <th>Bill Amount</th>
+    <th>Transaction Status</th>
+  </tr>
+  <tr *ngFor="let pastOrder of pastOrders">
+    <td>{{ pastOrder.orderId }}</td>
+    <td>{{ pastOrder.productName }}</td>
+    <td>{{ pastOrder.quantity }}</td>
+    <td>{{ pastOrder.billAmount }}</td>
+    <td>{{ pastOrder.transaction }}</td>
+  </tr>
+</table>
+
+<select [(ngModel)]="selectedValue">
+  <option *ngFor="let item of items" [value]="item.name">
+    {{ item.name }}
+  </option>
+</select>
+<div class="row" [ngSwitch]="selectedValue">
+  <div *ngSwitchCase="'One'">One is Pressed</div>
+  <div *ngSwitchCase="'Two'">Two is Selected</div>
+  <div *ngSwitchCase="'Three'">Three is Selected</div>
+  <div *ngSwitchCase="'Four'">Four is Selected</div>
+  <div *ngSwitchCase="'Five'">Five is Selected</div>
+  <div *ngSwitchDefault>Default Option</div>
+</div>
+
+<h1 appChangeText>Hello World</h1>
+<button
+  [ngStyle]="{ color: buttonColor, backgroundColor: buttonBackground }"
+  (mouseenter)="mouseEnter()"
+  (mouseleave)="mouseLeave()"
+>
+  Hover Over Me
+</button>
+<p>{{ "hello WOrld" | uppercase }}</p>
+<p>{{ "hello WOrld" | lowercase }}</p>
+<p>{{ "hello world" | titlecase }}</p>
+<p>{{ title | uppercase }}</p>
+<p>{{ score | percent }}</p>
+<p>{{ score | currency }}</p>
+<p>{{ score | currency }}</p>
+<p>{{ score | currency : "INR" }}</p>
+<p>{{ "2/17/2002" | date }}</p>
+<p>{{ { productId: 1234, productName: "Samsung Mobile" } | json }}</p>
+<p>{{ "Laptop Charger" | slice : 3 : 6 }}</p>
+<p>{{ ["a", "b", "c", "d"] | slice : 1 : 3 }}</p>
+<p>Month is {{ "2018-11-11" | date | uppercase | slice : 0 : 4 }}</p>
+<p>{{ product | json }}</p>
+<p>{{ 5 | sqr }}</p>
+<p>{{ "Sahil Mehnde" | salutation : "M" }}</p>
+<app-forms></app-forms>
+<div>Todays Date is: {{ today }}</div>
+<div>{{ books | json }}</div>
+
+<div class="container">
+  <h2>Course Details</h2>
+  <p>Select a course to view</p>
+  <select [(ngModel)]="selectedCourseValue">
+    <option *ngFor="let courseitem of courseitems" [value]="courseitem.id">
+      {{ courseitem.name }}
+    </option>
+  </select>
+  <app-courselist
+    [courseitem]="courseitems[selectedCourseValue - 1]"
+  ></app-courselist>
+</div>
+
+{{ outputdata }}

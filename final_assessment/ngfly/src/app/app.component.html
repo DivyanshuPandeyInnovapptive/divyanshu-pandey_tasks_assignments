@@ -1,0 +1,10 @@
+<app-navbar></app-navbar>
+<amplify-authenticator class="flex justify-center h-[90vh]">
+  <ng-template
+    amplifySlot="authenticated"
+    let-user="user"
+    let-signOut="signOut"
+  >
+    <router-outlet></router-outlet>
+  </ng-template>
+</amplify-authenticator>

@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Update Movie Booking</h1>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)" class="add-form">
+    <mat-form-field>
+      <input matInput placeholder="Movie Name" formControlName="movieName" />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="No of Tickets"
+        formControlName="noOfTickets"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Movie Booking Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="movieBookingDate"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br />
+    <button type="submit" mat-raised-button color="primary">
+      Update Movie Booking
+    </button>
+  </form>
+</div>

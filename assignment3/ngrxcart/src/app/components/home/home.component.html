@@ -1,0 +1,14 @@
+<div class="grid">
+  <button class="btn btn-secondary" (click)="update()">Add to Cart</button>
+  <div
+    class="card phone-container"
+    *ngFor="let product of allProducts$ | async"
+  >
+    <img src="{{ product.image }}" alt="{{ product.name }}" height="320" />
+    <h2></h2>
+    <p><b>Price:</b> {{ product.price }}</p>
+    <button class="btn btn-secondary" (click)="updateProduct(product)">
+      Add to Cart
+    </button>
+  </div>
+</div>

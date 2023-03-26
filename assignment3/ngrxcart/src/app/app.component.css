@@ -1,0 +1,4 @@
+.nav-gap {
+    display: flex;
+    justify-content: space-between;
+}

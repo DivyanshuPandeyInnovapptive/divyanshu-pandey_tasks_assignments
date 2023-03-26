@@ -1,0 +1,63 @@
+<!-- <form action="/">
+  <table>
+    <tr>
+      <td>Username</td>
+      <td><input type="text" /></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><input type="password" /></td>
+    </tr>
+    <tr>
+      <td [colSpan]="2"><button type="submit">Login</button></td>
+    </tr>
+  </table>
+</form>
+
+<div>
+  <input type="text" [(ngModel)]="CurrentCustomer.name" /><br />
+  <input type="email" [(ngModel)]="CurrentCustomer.email" /><br />
+</div>
+Name :{{ CurrentCustomer.name }} <br />
+Email:{{ CurrentCustomer.email }} -->
+
+<h1 class="login-title">Login</h1>
+<table>
+  <tr>
+    <td>
+      <label for="email"><h3>Email:</h3></label>
+    </td>
+    <td><input type="email" placeholder="Email" [(ngModel)]="email" /></td>
+  </tr>
+  <tr>
+    <td>
+      <label for="password"><h3>Password:</h3></label>
+    </td>
+    <td>
+      <input placeholder="Password" type="password" [(ngModel)]="password" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <input
+        type="submit"
+        class="login-button"
+        (click)="validate()"
+        value="Login"
+      />
+    </td>
+  </tr>
+</table>
+<div *ngIf="loginSuccess">
+  <img src="assets/loginsuccess.png" alt="login-success" />
+  <p>Welcome Admin!</p>
+</div>
+<div *ngIf="loginFailed">
+  <img src="assets/loginfailed.png" alt="login-failed" />
+  <p>Invalid Credentials</p>
+</div>
+<h1 [ngStyle]="{ color: result === 'Login Failed' ? 'red' : '#4CAF50' }">
+  {{ result }}
+</h1>
+<h1>{{ passwordStrength }}</h1>
+{{ myInputMsg }}

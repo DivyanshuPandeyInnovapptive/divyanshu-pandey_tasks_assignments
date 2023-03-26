@@ -1,0 +1,19 @@
+<form #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin.value)">
+  <input
+    type="text"
+    class="form-control"
+    name="emailid"
+    placeholder="emailid"
+    ngModel
+  />
+  <br />
+  <input
+    class="form-control"
+    type="password"
+    name="passwd"
+    placeholder="passwd"
+    ngModel
+  />
+  <br />
+  <input class="form-control btn btn-primary" type="submit" value="submit" />
+</form>

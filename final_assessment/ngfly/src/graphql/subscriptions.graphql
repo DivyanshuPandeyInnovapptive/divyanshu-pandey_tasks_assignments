@@ -1,0 +1,193 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateFlight(
+  $filter: ModelSubscriptionFlightFilterInput
+  $username: String
+) {
+  onCreateFlight(filter: $filter, username: $username) {
+    id
+    code
+    name
+    company
+    duration
+    origin
+    destination
+    price
+    total_seats
+    available_seats
+    bookings {
+      items {
+        id
+        departure_time
+        seats
+        createdAt
+        updatedAt
+        flightBookingsId
+        username
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    username
+  }
+}
+subscription OnUpdateFlight(
+  $filter: ModelSubscriptionFlightFilterInput
+  $username: String
+) {
+  onUpdateFlight(filter: $filter, username: $username) {
+    id
+    code
+    name
+    company
+    duration
+    origin
+    destination
+    price
+    total_seats
+    available_seats
+    bookings {
+      items {
+        id
+        departure_time
+        seats
+        createdAt
+        updatedAt
+        flightBookingsId
+        username
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    username
+  }
+}
+subscription OnDeleteFlight(
+  $filter: ModelSubscriptionFlightFilterInput
+  $username: String
+) {
+  onDeleteFlight(filter: $filter, username: $username) {
+    id
+    code
+    name
+    company
+    duration
+    origin
+    destination
+    price
+    total_seats
+    available_seats
+    bookings {
+      items {
+        id
+        departure_time
+        seats
+        createdAt
+        updatedAt
+        flightBookingsId
+        username
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    username
+  }
+}
+subscription OnCreateBooking(
+  $filter: ModelSubscriptionBookingFilterInput
+  $username: String
+) {
+  onCreateBooking(filter: $filter, username: $username) {
+    id
+    departure_time
+    seats
+    flight {
+      id
+      code
+      name
+      company
+      duration
+      origin
+      destination
+      price
+      total_seats
+      available_seats
+      bookings {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      username
+    }
+    createdAt
+    updatedAt
+    flightBookingsId
+    username
+  }
+}
+subscription OnUpdateBooking(
+  $filter: ModelSubscriptionBookingFilterInput
+  $username: String
+) {
+  onUpdateBooking(filter: $filter, username: $username) {
+    id
+    departure_time
+    seats
+    flight {
+      id
+      code
+      name
+      company
+      duration
+      origin
+      destination
+      price
+      total_seats
+      available_seats
+      bookings {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      username
+    }
+    createdAt
+    updatedAt
+    flightBookingsId
+    username
+  }
+}
+subscription OnDeleteBooking(
+  $filter: ModelSubscriptionBookingFilterInput
+  $username: String
+) {
+  onDeleteBooking(filter: $filter, username: $username) {
+    id
+    departure_time
+    seats
+    flight {
+      id
+      code
+      name
+      company
+      duration
+      origin
+      destination
+      price
+      total_seats
+      available_seats
+      bookings {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      username
+    }
+    createdAt
+    updatedAt
+    flightBookingsId
+    username
+  }
+}

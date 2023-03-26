@@ -1,0 +1,171 @@
+<img src="../assets/landing.png" width="100%" alt="landing" />
+<svg
+  id="wave"
+  style="transform: rotate(0deg); transition: 0.3s"
+  viewBox="0 0 1440 100"
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  class="z-[5] relative bottom-[7rem]"
+>
+  <defs>
+    <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
+      <stop stop-color="rgba(245, 245, 245, 1)" offset="0%"></stop>
+      <stop stop-color="rgba(245, 245, 245, 1)" offset="100%"></stop>
+    </linearGradient>
+  </defs>
+  <path
+    style="transform: translate(0, 0px); opacity: 1"
+    fill="url(#sw-gradient-0)"
+    d="M0,0L34.3,8.3C68.6,17,137,33,206,48.3C274.3,63,343,77,411,78.3C480,80,549,70,617,66.7C685.7,63,754,67,823,70C891.4,73,960,77,1029,70C1097.1,63,1166,47,1234,40C1302.9,33,1371,37,1440,35C1508.6,33,1577,27,1646,21.7C1714.3,17,1783,13,1851,23.3C1920,33,1989,57,2057,61.7C2125.7,67,2194,53,2263,41.7C2331.4,30,2400,20,2469,23.3C2537.1,27,2606,43,2674,51.7C2742.9,60,2811,60,2880,53.3C2948.6,47,3017,33,3086,36.7C3154.3,40,3223,60,3291,71.7C3360,83,3429,87,3497,86.7C3565.7,87,3634,83,3703,78.3C3771.4,73,3840,67,3909,55C3977.1,43,4046,27,4114,23.3C4182.9,20,4251,30,4320,31.7C4388.6,33,4457,27,4526,23.3C4594.3,20,4663,20,4731,23.3C4800,27,4869,33,4903,36.7L4937.1,40L4937.1,100L4902.9,100C4868.6,100,4800,100,4731,100C4662.9,100,4594,100,4526,100C4457.1,100,4389,100,4320,100C4251.4,100,4183,100,4114,100C4045.7,100,3977,100,3909,100C3840,100,3771,100,3703,100C3634.3,100,3566,100,3497,100C3428.6,100,3360,100,3291,100C3222.9,100,3154,100,3086,100C3017.1,100,2949,100,2880,100C2811.4,100,2743,100,2674,100C2605.7,100,2537,100,2469,100C2400,100,2331,100,2263,100C2194.3,100,2126,100,2057,100C1988.6,100,1920,100,1851,100C1782.9,100,1714,100,1646,100C1577.1,100,1509,100,1440,100C1371.4,100,1303,100,1234,100C1165.7,100,1097,100,1029,100C960,100,891,100,823,100C754.3,100,686,100,617,100C548.6,100,480,100,411,100C342.9,100,274,100,206,100C137.1,100,69,100,34,100L0,100Z"
+  ></path>
+</svg>
+<div class="flex justify-center relative z-[10] bottom-[27rem]">
+  <div class="card w-96 bg-base-100 shadow-xl search-box">
+    <div class="card-body flex flex-row items-center justify-center">
+      <div>
+        <app-DatePicker
+          (_datePicker)="setDepartureDate($event)"
+        ></app-DatePicker>
+      </div>
+      <div>
+        <label for="seatCount" class="font-bold mb-1 text-gray-700 block"
+          >No of Seats</label
+        >
+        <input
+          type="text"
+          id="seatCount"
+          placeholder="No of seats"
+          [(ngModel)]="noOfSeats"
+          (ngModelChange)="onSeatChange($event)"
+          class="input input-bordered input-primary"
+        />
+      </div>
+      <div>
+        <label for="seatCount" class="font-bold mb-1 text-gray-700 block"
+          >Origin</label
+        >
+        <input
+          type="text"
+          placeholder="Origin"
+          [(ngModel)]="origin"
+          class="input input-bordered input-primary"
+        />
+      </div>
+      <div>
+        <label for="seatCount" class="font-bold mb-1 text-gray-700 block"
+          >Destination</label
+        >
+        <input
+          type="text"
+          placeholder="Destination"
+          [(ngModel)]="destination"
+          class="input input-bordered input-primary"
+        />
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <button
+        class="btn btn-primary relative top-[1.5rem] w-[30rem] rounded-full"
+        (click)="searchFlights()"
+      >
+        Search Flights
+      </button>
+    </div>
+  </div>
+</div>
+<div class="bg-[#f5f5f5] relative bottom-[15rem]">
+  <div
+    class="flex justify-center mb-[8rem] font-bold text-4xl relative bottom-[3rem]"
+  >
+    Available Flights
+  </div>
+  <div class="flex bg-[#f5f5f5] justify-center" *ngFor="let flight of flights">
+    <div class="card w-96 bg-base-100 m-[0.5rem] shadow-xl search-box">
+      <div class="card-body flex flex-row justify-between">
+        <div class="w-[25%] vertical_dotted_line flex flex-col justify-between">
+          <div>
+            <label for="ftname" class="font-medium">Flight Name</label>
+            <div id="fname" class="horiz_dotted_line">{{ flight?.name }}</div>
+          </div>
+          <div>
+            <label for="fcom" class="font-medium">Company</label>
+            <div id="fcom">{{ flight?.company }}</div>
+          </div>
+          <div>
+            <span class="font-medium">Flight Code: </span>{{ flight?.code }}
+          </div>
+        </div>
+        <div class="flex flex-row justify-between">
+          <div class="flex justify-center items-center pl-[1rem]">
+            <div class="flex flex-col items-center">
+              <div>{{ flight?.origin?.toUpperCase() }}</div>
+              <div class="text-sm flex flex-col items-center">
+                <div>{{ this.flightsDeparture[flight.id].toDateString() }}</div>
+                <div class="font-medium">
+                  {{ this.flightsDeparture[flight.id].getHours() }}:{{
+                    this.flightsDeparture[flight.id].getMinutes()
+                  }}
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col px-[0.5rem] justify-center items-center">
+              <div class="flex justify-center text-sm text-[#3d4451]">
+                {{ flight.duration / 60 }} Hours
+              </div>
+              <div class="flex flex-row items-center justify-center">
+                <div class="hr-bg"></div>
+                <mat-icon class="text-[#636af9] rot-icon"
+                  >airplanemode_active</mat-icon
+                >
+              </div>
+              <div class="flex justify-center text-sm text-[#3d4451]">
+                <!-- {{ departureDate }},  -->
+                {{ noOfSeats }} Seat
+              </div>
+            </div>
+            <div class="flex flex-col items-center">
+              <div>{{ flight?.destination?.toUpperCase() }}</div>
+              <div class="text-sm flex flex-col items-center">
+                <div>{{ this.flightsArrival[flight.id].toDateString() }}</div>
+                <div class="font-medium">
+                  {{ this.flightsArrival[flight.id].getHours() }}:{{
+                    this.flightsArrival[flight.id].getMinutes()
+                  }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col justify-between">
+          <div>
+            <div>
+              <span class="font-medium">Price: </span>${{ flight.price }}
+            </div>
+            <div>
+              <span class="font-medium">Seats Left: </span>
+              <span class="text-[#5ed39a]">{{ flight.available_seats }}</span>
+            </div>
+          </div>
+          <button
+            class="btn rounded-full w-[10rem]"
+            (click)="createBooking(flight)"
+          >
+            Book
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex justify-center text-2xl relative bottom-[8rem]"
+    *ngIf="flights.length === 0"
+  >
+    Sorry No Available Flights :/
+  </div>
+</div>
+<div
+  class="z-[10] success-toast alert alert-success w-[20rem] flex justify-center"
+>
+  Flight booked successfully.
+</div>
+<!-- <app-footer></app-footer> -->
