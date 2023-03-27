@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Auth } from 'aws-amplify';
+import { Observable } from 'rxjs';
 import { APIService, Booking, Flight } from 'src/app/API.service';
 import { AppService } from 'src/app/app.service';
+import { DELETE_BOOKING, FETCH_BOOKING } from 'src/app/store/store.actions';
+import { selectBookingCollection } from 'src/app/store/store.selectors';
 
 @Component({
   selector: 'app-mybookings',
@@ -10,6 +14,7 @@ import { AppService } from 'src/app/app.service';
 })
 export class MybookingsComponent {
   bookings: Array<Booking> = [];
+  bookings$: Observable<Booking[]> = this.store.select(selectBookingCollection);
   upcoming_bookings: Array<Booking> = [];
   past_bookings: Array<Booking> = [];
   bookingFlights: any = {};
@@ -36,11 +41,11 @@ export class MybookingsComponent {
     this.appService.public_query$.next(false);
   }
 
-  filterBookings() {
+  filterBookings(bookings: any) {
     let d = new Date();
     this.upcoming_bookings = [];
     this.past_bookings = [];
-    for (let booking of this.bookings) {
+    for (let booking of bookings) {
       // if (booking.flightBookingsId)
       //   console.log(this.bookingFlights[booking.flightBookingsId]);
       if (new Date(booking.departure_time) < d)
@@ -55,12 +60,12 @@ export class MybookingsComponent {
       .then((response) => {
         console.log(response);
       })
-      .catch(
-        (err) =>
-          (this.bookings = this.bookings.filter(
-            (booking) => booking.id !== err.data.deleteBooking.id
-          ))
-      );
+      .catch((err) => {
+        this.bookings = this.bookings.filter(
+          (booking) => booking.id !== err.data.deleteBooking.id
+        );
+        this.store.dispatch(DELETE_BOOKING({ booking: booking }));
+      });
   }
 
   getBookings() {
@@ -71,6 +76,7 @@ export class MybookingsComponent {
       })
       .catch((err) => {
         this.bookings = err.data.listBookings.items as Booking[];
+        this.store.dispatch(FETCH_BOOKING({ bookings: this.bookings }));
         for (let booking of err.data.listBookings.items) {
           this.getFlight(booking.flightBookingsId);
         }
@@ -79,8 +85,15 @@ export class MybookingsComponent {
       });
   }
 
-  constructor(private appService: AppService, private apiService: APIService) {
+  constructor(
+    private appService: AppService,
+    private apiService: APIService,
+    private store: Store
+  ) {
     this.getBookings();
+    this.bookings$.subscribe((data) => {
+      this.filterBookings(data);
+    });
     Auth.currentAuthenticatedUser().then((user) => {
       if (user) this.appService.authenticated$.next(true);
     });

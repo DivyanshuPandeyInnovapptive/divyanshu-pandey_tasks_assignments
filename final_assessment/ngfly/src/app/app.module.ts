@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { MaterialModule } from './material-module';
-import { StoreRootModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BigintPipe } from './pipes/bigint.pipe';
 import { GetTimePipe } from './pipes/get-time.pipe';
 import { GetLocaleDateFormatPipe } from './pipes/get-locale-date-format.pipe';
+import { STORE_REDUCER } from './store/store.reducers';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { GetLocaleDateFormatPipe } from './pipes/get-locale-date-format.pipe';
     MaterialModule,
     AmplifyAuthenticatorModule,
     BrowserAnimationsModule,
-    // StoreModule.forRoot({ app: STORE_REDUCER }),
+    StoreModule.forRoot({ app: STORE_REDUCER }),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
   ],
   providers: [],

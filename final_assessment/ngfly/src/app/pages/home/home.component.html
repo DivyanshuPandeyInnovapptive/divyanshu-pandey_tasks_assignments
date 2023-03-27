@@ -79,7 +79,10 @@
   >
     Available Flights
   </div>
-  <div class="flex bg-[#f5f5f5] justify-center" *ngFor="let flight of flights">
+  <div
+    class="flex bg-[#f5f5f5] justify-center"
+    *ngFor="let flight of flights$ | async"
+  >
     <div class="card w-96 bg-base-100 m-[0.5rem] shadow-xl search-box">
       <div class="card-body flex flex-row justify-between">
         <div class="w-[25%] vertical_dotted_line flex flex-col justify-between">

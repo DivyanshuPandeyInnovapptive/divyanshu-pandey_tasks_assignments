@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Amplify, Auth } from 'aws-amplify';
+import { Observable } from 'rxjs';
 import {
   APIService,
   CreateBookingInput,
@@ -7,6 +9,8 @@ import {
   SearchableFlightFilterInput,
 } from 'src/app/API.service';
 import { AppService } from 'src/app/app.service';
+import { FETCH_FLIGHT } from 'src/app/store/store.actions';
+import { selectFlightCollection } from 'src/app/store/store.selectors';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +19,9 @@ import { AppService } from 'src/app/app.service';
 })
 export class HomeComponent {
   flights: Array<Flight> = [];
+  flights$: Observable<Array<Flight>> = this.store.select(
+    selectFlightCollection
+  );
   flightsDeparture: any = {};
   flightsArrival: any = {};
   noOfSeats: number = 1;
@@ -129,8 +136,11 @@ export class HomeComponent {
         this.flights = event.items as Flight[];
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
         this.flights = e.data.searchFlights.items as Flight[];
+        this.store.dispatch(
+          FETCH_FLIGHT({ flights: e.data.searchFlights.items as Flight[] })
+        );
       })
       .finally(() => {
         this.setFlightsDeparture();
@@ -142,7 +152,11 @@ export class HomeComponent {
     this.searchFlights();
   }
 
-  constructor(private appService: AppService, private apiService: APIService) {
+  constructor(
+    private appService: AppService,
+    private apiService: APIService,
+    private store: Store
+  ) {
     Auth.currentAuthenticatedUser().then((user) => {
       if (user) this.appService.authenticated$.next(true);
     });

@@ -12,7 +12,7 @@ export const initialFlightState: AppState = {
   bookings: [],
 };
 
-export const FLIGHT_REDUCER = createReducer(
+export const STORE_REDUCER = createReducer(
   initialFlightState,
   on(FETCH_FLIGHT, (state, { flights }) => {
     return { ...state, flights: flights };
