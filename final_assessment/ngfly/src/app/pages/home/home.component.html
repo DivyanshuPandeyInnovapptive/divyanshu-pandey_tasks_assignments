@@ -103,7 +103,13 @@
             <div class="flex flex-col items-center">
               <div>{{ flight?.origin?.toUpperCase() }}</div>
               <div class="text-sm flex flex-col items-center">
-                <div>{{ this.flightsDeparture[flight.id].toDateString() }}</div>
+                <div
+                  *ngIf="
+                    this.flightsDeparture && this.flightsDeparture[flight.id]
+                  "
+                >
+                  {{ this.flightsDeparture[flight.id].toDateString() }}
+                </div>
                 <div class="font-medium">
                   {{ this.flightsDeparture[flight.id].getHours() }}:{{
                     this.flightsDeparture[flight.id].getMinutes()
