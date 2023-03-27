@@ -1,9 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { MaterialModule } from './material-module';
+import { StoreRootModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -38,6 +40,8 @@ import { GetLocaleDateFormatPipe } from './pipes/get-locale-date-format.pipe';
     MaterialModule,
     AmplifyAuthenticatorModule,
     BrowserAnimationsModule,
+    // StoreModule.forRoot({ app: STORE_REDUCER }),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
   ],
   providers: [],
   bootstrap: [AppComponent],
